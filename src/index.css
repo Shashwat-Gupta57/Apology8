@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Quicksand", ui-sans-serif, system-ui, sans-serif;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #d6d3d1; /* stone-300 */
+  color: #292524; /* stone-800 */
+}
+
+/* Float animations */
+@keyframes float {
+  0% { transform: translateY(0px) scale(1); }
+  33% { transform: translateY(-10px) scale(1.02); }
+  66% { transform: translateY(10px) scale(0.98); }
+  100% { transform: translateY(0px) scale(1); }
+}
+
+.animate-float {
+  animation: float 12s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float 15s ease-in-out infinite;
+  animation-delay: -7s;
+}
+
+/* Frenzy Animation */
+@keyframes frenzy {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  20% { transform: translate(-2px, 2px) rotate(-1deg); }
+  40% { transform: translate(2px, -2px) rotate(1deg); }
+  60% { transform: translate(-3px, -1px) rotate(-2deg); }
+  80% { transform: translate(1px, 3px) rotate(1deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+@keyframes glitch {
+  0% { clip-path: inset(20% 0 80% 0); transform: translate(-2px, 2px); }
+  20% { clip-path: inset(60% 0 10% 0); transform: translate(2px, -2px); }
+  40% { clip-path: inset(40% 0 50% 0); transform: translate(2px, 2px); }
+  60% { clip-path: inset(80% 0 5% 0); transform: translate(-2px, -2px); }
+  80% { clip-path: inset(10% 0 70% 0); transform: translate(2px, -2px); }
+  100% { clip-path: inset(30% 0 50% 0); transform: translate(0, 0); }
+}
+
+.broken-card {
+  background: rgba(41, 37, 36, 0.6); /* dark stone */
+  backdrop-filter: blur(8px) contrast(1.2) grayscale(80%);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: 2px solid rgba(0, 0, 0, 0.8);
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 3px solid rgba(0, 0, 0, 0.9);
+  box-shadow: 10px 15px 30px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(0,0,0,0.5);
+  animation: frenzy 0.3s infinite alternate;
+  color: #e5e5e5;
+}
+
+.broken-button {
+  background: #1c1917;
+  color: #d6d3d1;
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 3px 3px 0 rgba(0,0,0,0.5);
+  transition: all 0.1s;
+}
+
+.broken-button:active {
+  box-shadow: 0 0 0 rgba(0,0,0,0.5);
+  transform: translate(3px, 3px);
+}
+
+.glitch-text {
+  position: relative;
+  display: inline-block;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+}
+
+.glitch-text::before {
+  left: 2px;
+  text-shadow: -1px 0 red;
+  animation: glitch 2s infinite linear alternate-reverse;
+}
+
+.glitch-text::after {
+  left: -2px;
+  text-shadow: -1px 0 blue;
+  animation: glitch 1.5s infinite linear alternate;
+}
+

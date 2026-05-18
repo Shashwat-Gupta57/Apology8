@@ -1,0 +1,6 @@
+{
+  "name": "Apology to Apoorva",
+  "description": "An interactive, cute apology website for Apoorva.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
